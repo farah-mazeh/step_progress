@@ -72,8 +72,8 @@ class HorizontalStepProgress extends StepProgressWidget {
     super.nodeIconBuilder,
     super.nodeLabelBuilder,
     super.lineLabelBuilder,
-    super.completedSteps
-    super.key,
+    super.completedSteps,
+    super.key
   }) : super(axis: Axis.horizontal);
 
   /// Builds the step nodes for the horizontal step progress widget.

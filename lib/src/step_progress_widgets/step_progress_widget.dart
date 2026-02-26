@@ -84,7 +84,7 @@ abstract class StepProgressWidget extends StatelessWidget {
     this.nodeIconBuilder,
     this.nodeLabelBuilder,
     this.lineLabelBuilder,
-    this.completedSteps
+    this.completedSteps,
     super.key,
   })  : assert(
           nodeTitles == null || nodeTitles.length <= totalSteps,
@@ -181,14 +181,21 @@ abstract class StepProgressWidget extends StatelessWidget {
   /// based on the current step and highlight options.
   bool isHighlightedStepLine(int index) {
   final shouldHighlightCompleted =
-      highlightOptions == StepProgressHighlightOptions.highlightCompletedLines ||
-      highlightOptions == StepProgressHighlightOptions.highlightCompletedNodesAndLines;
+      highlightOptions == StepProgressHighlightOptions.highlightCompletedLines
+          ||
+          highlightOptions ==
+              StepProgressHighlightOptions.highlightCompletedNodesAndLines;
 
   final shouldHighlightCurrent =
-      highlightOptions == StepProgressHighlightOptions.highlightCurrentLine ||
-      highlightOptions == StepProgressHighlightOptions.highlightCurrentNodeAndLine;
+      highlightOptions ==
+          StepProgressHighlightOptions.highlightCurrentLine ||
+      highlightOptions
+          ==
+          StepProgressHighlightOptions.highlightCurrentNodeAndLine;
 
-  final isStartWithLineOrEqualCount = isStartWithLine || hasEqualNodeAndLineCount;
+  final isStartWithLineOrEqualCount = isStartWithLine
+      ||
+      hasEqualNodeAndLineCount;
 
   if (shouldHighlightCompleted && completedSteps != null) {
     // Default layout you're using: node then line, and not equal count
@@ -205,11 +212,15 @@ abstract class StepProgressWidget extends StatelessWidget {
   }
 
   if (shouldHighlightCompleted) {
-    return isStartWithLineOrEqualCount ? index <= currentStep : index < currentStep;
+    return isStartWithLineOrEqualCount
+        ? index <= currentStep
+        : index < currentStep;
   }
 
   if (shouldHighlightCurrent) {
-    return isStartWithLineOrEqualCount ? index == currentStep : index == currentStep - 1;
+    return isStartWithLineOrEqualCount
+        ? index == currentStep
+        : index == currentStep - 1;
   }
 
   return false;
