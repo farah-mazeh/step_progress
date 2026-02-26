@@ -138,6 +138,7 @@ class StepProgress extends StatefulWidget {
     this.visibilityOptions = StepProgressVisibilityOptions.nodeThenLine,
     this.highlightOptions =
         StepProgressHighlightOptions.highlightCompletedNodesAndLines,
+    this.completedSteps,
     this.nodeTitles,
     this.nodeSubTitles,
     this.lineTitles,
@@ -166,9 +167,14 @@ class StepProgress extends StatefulWidget {
           'lineTitles must be equals to or less than total steps',
         ),
         assert(
+          completedSteps == null || completedSteps.length == totalSteps,
+          'completedSteps length must equal totalSteps',
+        ),
+        assert(
           lineSubTitles == null || lineSubTitles.length <= totalSteps,
           'lineSubTitles must be equals to or less than total steps',
         );
+
 
   /// List of Titles for each step in the progress
   final List<String>? nodeTitles;
@@ -244,6 +250,7 @@ class StepProgress extends StatefulWidget {
 
   /// Determines whether nodes and lines have equal counts.
   final bool hasEqualNodeAndLineCount;
+  final List<bool>? completedSteps;
 
   @override
   _StepProgressState createState() {
@@ -400,6 +407,7 @@ class _StepProgressState extends State<StepProgress>
                 nodeIconBuilder: widget.nodeIconBuilder,
                 lineLabelBuilder: widget.lineLabelBuilder,
                 nodeLabelBuilder: widget.nodeLabelBuilder,
+                completedSteps : widget.completedSteps  
               )
             : VerticalStepProgress(
                 controller: widget.controller,
@@ -422,6 +430,7 @@ class _StepProgressState extends State<StepProgress>
                 nodeIconBuilder: widget.nodeIconBuilder,
                 lineLabelBuilder: widget.lineLabelBuilder,
                 nodeLabelBuilder: widget.nodeLabelBuilder,
+                completedSteps : widget.completedSteps
               ),
       ),
     );

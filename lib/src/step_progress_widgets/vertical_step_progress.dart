@@ -122,6 +122,7 @@ class VerticalStepProgress extends StepProgressWidget {
     super.nodeIconBuilder,
     super.nodeLabelBuilder,
     super.lineLabelBuilder,
+    super.completedSteps
     super.key,
   }) : super(axis: Axis.vertical);
 
